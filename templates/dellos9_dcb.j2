@@ -4,7 +4,7 @@ Purpose:
 Configure DCB-MAP on Devices.
 
 dellos_dcb:
-  spine2:
+  OS9:
     dcb_enable: true
     dcb_map:  
       - name: test
@@ -66,8 +66,8 @@ interface {{ intf.name }}
 no dcb-map {{ map.name }}
       {% else %}
 dcb-map {{ map.name }}
-        {% if map.priority_group is defined and map.priority_group %}
         {% set pgid_set = {'value': False} %}
+        {% if map.priority_group is defined and map.priority_group %}
           {% for group in map.priority_group %}
             {% if group.pgid is defined and group.pgid >= 0 %}
               {% if group.state is defined and group.state == "absent" %}
