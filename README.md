@@ -1,7 +1,7 @@
 DCB Role for Dell EMC Networking OS
 ======================================
 
-This role facilitates the configuration of Data Center Bridging (DCB). It supports the configuration of DCB map and DCB buffer and assigns them to interfaces. This role is abstracted for OS9.
+This role facilitates the configuration of Data Center Bridging (DCB). It supports the configuration of DCB map and DCB buffer and assigns them to interfaces. This role is abstracted for dellos9.
 
 
 Installation
@@ -18,11 +18,11 @@ This role requires an SSH connection for connectivity to your Dell EMC Networkin
 Role Variables
 --------------
 
-``dellos_dcb``(dictionary) contains the hostname (dictionary). The hostname is the value of the ``hostname`` variable that corresponds to the name of the OS device. This role is abstracted using the ``ansible_net_os_name`` variable  that can take the value "dellos9".
+This role is abstracted using the ``ansible_net_os_name`` variable  that can take the value "dellos9".
 
 Any role variable with a corresponding state variable set to absent negates the configuration of that variable. For variables with no state variable, setting an empty value for the variable negates the corresponding configuration. The variables and its values are case-sensitive.
 
-``hostname`` contains the following keys:
+``dellos_dcb`` contains the following keys:
 
 |        Key | Type                      | Notes                                                                                                                                                                                     |
 |------------|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -89,8 +89,7 @@ The dellos-dcb role is built on modules included in the core Ansible code. These
 Example Playbook
 ----------------
 
-The following example uses the dellos-dcb role to completely configure DCB map and DCB buffer profiles and assigns it to interfaces. The example creates a ``hosts`` file with the switch details and corresponding 
-variables defined in the ``vars/main.yaml`` file at the role path. It writes a simple playbook that only references the dellos-dcb role. By including the role, you automatically get access to all of the tasks to configure system features. 
+The following example uses the dellos-dcb role to completely configure DCB map and DCB buffer profiles and assigns it to interfaces. The example creates a ``hosts`` file with the switch details and corresponding variables. The hosts file should define the variable `` ansible_net_os_name `` with corresponding Dell EMC networking OS name. It writes a simple playbook that only references the dellos-dcb role.  
 
 Sample ``hosts`` file:
  
@@ -104,13 +103,9 @@ Sample ``host_vars/leaf1``:
       username: xxxxx 
       password: xxxxx
       authorize: yes
-	  auth_pass: xxxxx 
+      auth_pass: xxxxx 
       transport: cli
-      
-Sample ``vars/main.yaml``:
-
-	dellos_dcb:
-      leaf1:
+    dellos_dcb:
         dcb_map:
           - name:  test
             priority_pgid: 0 0 0 3 3 3 3 0 

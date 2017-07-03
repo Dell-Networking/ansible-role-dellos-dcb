@@ -1,6 +1,6 @@
 ---
 # tasks file for Dell-Networking.dellos-dcb
- - name: "Provision dcb configuration for OS9"
+ - name: "Provisioning DCB configuration for dellos9"
    dellos9_config:
       src: dellos9_dcb.j2
       provider: "{{ cli }}"

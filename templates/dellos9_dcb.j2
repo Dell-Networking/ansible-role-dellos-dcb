@@ -1,10 +1,9 @@
 #jinja2: trim_blocks: True,lstrip_blocks: True
 {################################
 Purpose:
-Configure DCB-MAP on Devices.
+Configure DCB commands for dellos9 Devices
 
 dellos_dcb:
-  OS9:
     dcb_enable: true
     dcb_map:  
       - name: test
@@ -39,8 +38,8 @@ dellos_dcb:
         state: present
 
 ################################}
-{% if (dellos_dcb is defined and dellos_dcb) and (hostname in dellos_dcb) %}
-{% set dcb_vars = dellos_dcb[hostname] %}
+{% if dellos_dcb is defined and dellos_dcb %}
+{% set dcb_vars = dellos_dcb %}
 {% if dcb_vars.dcb_enable is defined %}
   {% if dcb_vars.dcb_enable %}
 dcb enable 

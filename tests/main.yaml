@@ -1,7 +1,8 @@
 ---
 # vars file for Dell-Networking.dellos-dcb, below gives a sample configuration
+
+# Sample variables for dellos9 device
 dellos_dcb:
-  leaf3:
     dcb_enable: true
     dcb_map:
       - name:  test
