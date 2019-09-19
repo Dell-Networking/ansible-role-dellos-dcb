@@ -2,7 +2,6 @@
 {################################
 Purpose:
 Configure DCB commands for dellos9 Devices
-
 dellos_dcb:
     dcb_enable: true
     dcb_map:  
@@ -36,7 +35,6 @@ dellos_dcb:
           - name: fortyGigE 1/6
             state: present
         state: present
-
 ################################}
 {% if dellos_dcb is defined and dellos_dcb %}
 {% set dcb_vars = dellos_dcb %}

@@ -1,18 +1,4 @@
 ---
-# tasks file for Dell-Networking.dellosdcb
-
- - name: "Generating DCB configuration for dellos9"
-   template:
-      src: dellos9_dcb.j2
-      dest: "{{ build_dir }}/dcb9_{{hostname}}.conf.part"
-   when: (ansible_network_os is defined and ansible_network_os == "dellos9") and ((dellos_cfg_generate | default('False')) | bool)
-#   notify: save config os9
-   register: generate_output
-
- - name: "Provisioning DCB configuration for dellos9"
-   dellos9_config:
-      src: dellos9_dcb.j2
-   when: (ansible_network_os is defined and ansible_network_os == "dellos9")
-#   notify: save config os9
-   register: output
-
+# tasks file for Dell-Networking.dellos-dcb
+ - name: "Provision {{ ansible_network_os }} tasks"
+   include_tasks: provision_{{ ansible_network_os }}.yaml

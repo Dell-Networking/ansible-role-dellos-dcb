@@ -1,6 +1,5 @@
 ---
 # vars file for Dell-Networking.dellos-dcb, below gives a sample configuration
-
 # Sample variables for dellos9 device
 dellos_dcb:
     dcb_enable: true
